@@ -1700,6 +1700,30 @@ _oaw.prototype.configure = function(key, val, build, preview) {
           }
           _OA.append(this.element, this.css);
         }
+
+        // --- Pre-shutdown banner (see oaworks/discussion#3547) ---
+        // On 18th November 2025, make sure to remove the widget itself and only leave this message
+        // Don't forget to update the message itself and the UTM campaign code to shutdown_notice
+        if (this.plugin === 'instantill') {
+          var warnUrl = "https://blog.oa.works/sunsetting-the-open-access-button-instantill/"
+                      + "?utm_source=instantill&utm_medium=widget&utm_campaign=shutdown_pre_notice"
+                      + "&utm_content=" + encodeURIComponent(location.hostname || '');
+
+          var banner = '' +
+            '<div role="alert" aria-live="polite" ' +
+            '     style="margin:8px 0 12px; padding:10px 12px; ' +
+            '            border:1px solid #e4b4b8; background:#fff6f6; color:#5b1a1a; ' +
+            '            border-radius:4px; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">' +
+            '  <span aria-hidden="true" style="margin-right:.5em">⚠️</span>' +
+            '  <strong>This request tool (“InstantILL”) will stop working on November 18th, 2025.</strong> ' +
+            '  Please contact your library or this site’s administrator. ' +
+            '  <a href="' + warnUrl + '" target="_blank" rel="noopener">Learn more</a>.' +
+            '</div>';
+
+          _OA.append(this.element, banner);
+        }
+        // --- End pre-shutdown banner ---
+
         _OA.append(this.element, this.template);
         if (this.data.doi || this.data.title || this.data.url || this.data.id) {
           _OA.set('#_oaw_input', (this.data.doi ? this.data.doi : (this.data.title ? this.data.title : (this.data.url ? this.data.url : this.data.id))));
