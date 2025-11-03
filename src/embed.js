@@ -1701,31 +1701,6 @@ _oaw.prototype.configure = function(key, val, build, preview) {
           _OA.append(this.element, this.css);
         }
         _OA.append(this.element, this.template);
-
-        // --- Pre-shutdown banner (same as embedOA pre-notice) ---
-        try {
-          var _oawBannerLearn = "https://blog.oa.works/sunsetting-the-open-access-button-instantill/"
-                              + "?utm_source=embedoa&utm_medium=widget&utm_campaign=shutdown_pre_notice"
-                              + "&utm_content=" + encodeURIComponent((location && location.hostname) ? location.hostname : '');
-
-          var _oawBannerHtml = ''
-            + '<div id="_oaw_pre_shutdown_banner" role="alert" aria-live="polite"'
-            + '     style="margin:8px 0 12px; padding:10px 12px;'
-            + '            border:1px solid #e4b4b8; background:#fff6f6; color:#5b1a1a;'
-            + '            border-radius:4px; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">'
-            + '  <span aria-hidden="true" style="margin-right:.5em">⚠️</span>'
-            + '  <strong>This search tool will stop working on November 18th, 2025.</strong> '
-            + '  Please contact your library or this site’s administrator. '
-            + '  <a href="' + _oawBannerLearn + '" target="_blank" rel="noopener">Learn more</a>.'
-            + '</div>';
-
-          // Prepend once at the top of the mount element
-          var _mount = _OA.gebi(this.element);
-          if (_mount && !document.getElementById('_oaw_pre_shutdown_banner')) {
-            _mount.insertAdjacentHTML('afterbegin', _oawBannerHtml);
-          }
-        } catch(e) { }
-
         if (this.data.doi || this.data.title || this.data.url || this.data.id) {
           _OA.set('#_oaw_input', (this.data.doi ? this.data.doi : (this.data.title ? this.data.title : (this.data.url ? this.data.url : this.data.id))));
         }
