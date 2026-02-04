@@ -3,6 +3,7 @@ http://*     https://:splat   301!
 
 # Keep essential assets accessible (for now)
 /embed.js    /embed.js        200
+/embed.js/ /embed.js/ 200
 
 # Send every other path (secondary page) to the tombstone homepage
 /*           /                301!
