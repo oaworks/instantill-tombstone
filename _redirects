@@ -6,4 +6,8 @@ http://*     https://:splat   301!
 /embed.js/ /embed.js/ 200
 
 # Send every other path (secondary page) to the tombstone homepage
+/setup       /                301
+/setup/      /                301
+/demo        /                301
+/demo/       /                301
 /*           /                301!
